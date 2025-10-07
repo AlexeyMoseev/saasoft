@@ -1,6 +1,11 @@
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <AccountForm />
   </div>
 </template>
+
+<script setup lang="ts">
+useHead({
+  title: 'Управление учетными записями',
+});
+</script>

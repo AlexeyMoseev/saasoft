@@ -55,11 +55,14 @@
               <span v-if="field.required" class="text-red-500">*</span>
             </div>
 
-            <UInput
+            <UTextarea
               v-if="field.key === 'tagsInput'"
               v-model="inputs.get(id)![field.key]"
+              :rows="1"
+              autoresize
+              :maxrows="3"
               size="lg"
-              maxlength="50"
+              :maxlength="50"
               @input="onFieldInput(id)"
               @blur="onBlur(id)"
             />

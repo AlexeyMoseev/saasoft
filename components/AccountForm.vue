@@ -137,16 +137,6 @@
           Нет добавленных учетных записей. Нажмите "+" чтобы добавить.
         </p>
       </div>
-
-      <!-- Result button -->
-      <UButton
-        color="secondary"
-        variant="outline"
-        class="cursor-pointer mt-4"
-        @click="dump"
-      >
-        Dump all
-      </UButton>
     </UContainer>
   </div>
 </template>
@@ -296,13 +286,6 @@ function onTypeChange(id: string): void {
   if (row.type === ACCOUNT_TYPES.LDAP) row.password = '';
   validateAndSet(id);
   sync(id);
-}
-
-function dump(): void {
-  console.log(
-    'Store accounts:',
-    JSON.parse(JSON.stringify(accountsStore.accounts))
-  );
 }
 </script>
 

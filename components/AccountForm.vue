@@ -27,7 +27,6 @@
       />
 
       <div v-if="rowIds.length" class="space-y-4">
-        <!-- Field headers -->
         <div
           class="hidden sm:grid sm:grid-cols-[2fr_1.5fr_2fr_2fr_50px] gap-3 px-2 text-sm text-gray-600 dark:text-gray-400 font-medium"
         >
@@ -38,7 +37,6 @@
           <div />
         </div>
 
-        <!-- Account rows -->
         <div
           v-for="id in rowIds"
           :key="id"
@@ -57,7 +55,6 @@
               <span v-if="field.required" class="text-red-500">*</span>
             </div>
 
-            <!-- Tags field -->
             <UInput
               v-if="field.key === 'tagsInput'"
               v-model="inputs.get(id)![field.key]"
@@ -67,7 +64,6 @@
               @blur="onBlur(id)"
             />
 
-            <!-- Account type field -->
             <USelect
               v-else-if="field.key === 'type'"
               v-model="inputs.get(id)![field.key]"
@@ -76,7 +72,6 @@
               @change="onTypeChange(id)"
             />
 
-            <!-- Login field -->
             <UInput
               v-else-if="field.key === 'login'"
               v-model="inputs.get(id)![field.key]"
@@ -88,7 +83,6 @@
               @blur="onBlur(id)"
             />
 
-            <!-- Password field -->
             <UInput
               v-else-if="field.key === 'password'"
               v-model="inputs.get(id)![field.key]"
@@ -126,7 +120,6 @@
             </UInput>
           </div>
 
-          <!-- Delete button -->
           <UButton
             icon="i-heroicons-trash"
             size="lg"
@@ -139,7 +132,6 @@
         </div>
       </div>
 
-      <!-- Empty state -->
       <div v-else class="text-center py-12">
         <p class="text-gray-500 dark:text-gray-400">
           Нет добавленных учетных записей. Нажмите "+" чтобы добавить.
@@ -172,13 +164,11 @@ const inputs = ref<Map<string, Draft>>(new Map());
 const errors = ref<Map<string, FieldErrors>>(new Map());
 const showPasswords = ref<Map<string, boolean>>(new Map());
 
-// Type selector options
 const typeOptions = [
   { label: ACCOUNT_TYPES.LOCAL, value: ACCOUNT_TYPES.LOCAL },
   { label: ACCOUNT_TYPES.LDAP, value: ACCOUNT_TYPES.LDAP },
 ];
 
-// Form fields configuration
 const fields = [
   { key: 'tagsInput', label: 'Метки', required: false },
   { key: 'type', label: 'Тип записи', required: false },
